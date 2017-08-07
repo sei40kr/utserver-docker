@@ -1,2 +1,4 @@
 # utserver-docker
-A Docker image of [μTorrent](http://www.utorrent.com) server.
+
+This is a fork of [softvisio/utserver](https://bitbucket.org/softvisio/utserver), including minor hotfixes.
+
