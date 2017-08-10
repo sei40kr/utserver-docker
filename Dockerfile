@@ -17,9 +17,10 @@ EXPOSE 6881/udp
 
 WORKDIR /var/local/utserver/
 
-RUN apt-get update -qq && \
-    apt-get install -qq openssl ca-certificates wget && \
-    apt-get clean -qq
+RUN apt-get update -q && \
+    apt-get install -q openssl ca-certificates wget && \
+    apt-get clean -q && \
+    rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
 
 RUN tar -xzf utserver.tgz --strip-components=1 && \
     rm -f utserver.tgz && \
