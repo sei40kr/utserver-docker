@@ -1,8 +1,6 @@
 FROM debian:7
 
-MAINTAINER sei40kr <sei40kr@gmail.com>
-
-USER root
+MAINTAINER Seong Yong-ju <sei40kr@gmail.com>
 
 ADD utserver.conf /usr/local/utserver/utserver.conf
 ADD http://download.ap.bittorrent.com/track/beta/endpoint/utserver/os/linux-x64-debian-7-0 /usr/local/utserver/utserver.tgz
@@ -17,10 +15,9 @@ EXPOSE 6881/udp
 
 WORKDIR /var/local/utserver/
 
-RUN apt-get update -q && \
-    apt-get install -q openssl ca-certificates wget && \
-    apt-get clean -q && \
-    rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/*
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends openssl ca-certificates wget && \
+    rm -rf /var/lib/apt/lists/* /var/cache/apt/archives/*
 
 RUN tar -xzf utserver.tgz --strip-components=1 && \
     rm -f utserver.tgz && \
